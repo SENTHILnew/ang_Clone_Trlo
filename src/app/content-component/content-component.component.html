@@ -1,0 +1,262 @@
+<!--Home View-->
+<div *ngIf="!this.CommonServiceService.isboardview" class="container" style="margin-top:70px">
+  <div class="maincontent" *ngIf="this.starrData.length>0">
+    <div class="header">
+      <div class=" fa fa-star-o">
+
+      </div>
+      <span class="pad10">Starred Boards</span>
+    </div>
+    <ul class="flexList">
+      <li class="cardContainer" *ngFor="let board of this.starrData;index as i;trackBy:trackByFun"
+        (click)="openBoardView(board)">
+        <a class="card" [style.background-color]="board.bgColor" [style.background-image]="board.bgImg">
+          <div class="divContainer">
+            <div class="cardHeading">{{board.title}}</div>
+            <div><span class="fa fa-star-o star" [style.color]="board.star? 'yellow':'white'"
+                (click)="board.star=!board.star;this.split($event)"></span></div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="maincontent">
+    <div class="header">
+      <div class=" fa fa-user">
+
+      </div>
+      <span class="pad10">Personal Boards</span>
+    </div>
+    <ul class="flexList">
+      <li class="cardContainer" *ngFor="let board of this.CommonServiceService.boards;index as i;trackBy:trackByFun"
+        (click)="openBoardView(board)">
+        <a class="card" [style.background-color]="board.bgColor" [style.background-image]="board.bgImg">
+          <div class="divContainer">
+            <div class="cardHeading">{{board.title}}</div>
+            <div><span class="fa fa-star-o star" [style.color]="board.star? 'yellow':'white'"
+                (click)="board.star=!board.star;this.split($event)"></span></div>
+          </div>
+        </a>
+      </li>
+      <li class="cardContainer" (click)="createNewBoard(template)">
+        <a class="card newBoardCard">
+          <div class="divContainer">
+            <div class="cardHeading newBoard">Create new board...</div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</div>
+<!--Board View-->
+<div *ngIf="this.CommonServiceService.isboardview">
+  <div class="boardHeader">
+    <div class="subHeader"><span *ngIf="!titleedited"
+        (click)="editTitle()">{{CommonServiceService.selectedBoard.title}}</span>
+      <input *ngIf="titleedited" class="boardtitleEditer" #titlElm type="text"
+        [(ngModel)]="CommonServiceService.selectedBoard.title" (blur)="titleedited=false">
+    </div>
+    <span class="divider"></span>
+    <span class="fa fa-star-o headerStar" [style.color]="CommonServiceService.selectedBoard.star? 'yellow':'white'"
+      (click)="CommonServiceService.selectedBoard.star=!CommonServiceService.selectedBoard.star"></span>
+    <span class="divider"></span>
+    <button type="button" (click)="deleteItems()" class="btn btn-primary btCustom mar0 headerBtn">
+      <span class="optFont">Delete Multiple</span>
+    </button>
+  </div>
+  <div class="innerContainer">
+    <div class="card cardList" *ngFor="let list of CommonServiceService.selectedBoard.list;let i=index">
+      <div class="card-body">
+        <div class="cardListHeader"><span *ngIf="!list.isEdited" (click)="list.isEdited=true">{{list.title}}</span>
+          <input *ngIf="list.isEdited" class="boardtitleEditer" type="text" [(ngModel)]="list.title"
+            (blur)="list.isEdited=false">
+          <span class="fa fa-ellipsis-h menuList" (click)="editList(list)"></span></div>
+        <ng-template #itemTemplate let-item="item" let-index="index">
+          <div (contextmenu)="openEditor($event,item.initData,list)" (click)="editListItem(item.initData,list)">
+            <div><span>{{item.value}}</span><span class="fa fa-pencil fltRgt"
+                (click)="openEditor($event,item.initData,list)"></span>
+            </div>
+            <div>
+              <span *ngIf="item.initData.desc!==''" class="fa fa-align-left"></span>
+              <span style="margin-left: 8px;" *ngIf="item.initData.comments?.length!==0">
+                <span class="fa fa-comment-o"></span><span>{{item.initData.comments.length}}</span>
+              </span>
+            </div>
+          </div>
+        </ng-template>
+
+        <bs-sortable [(ngModel)]="list.itemsInList" *ngIf="!list.refresh" fieldName="title"
+          [itemTemplate]="itemTemplate" itemClass="sortable-item" itemActiveClass="sortableItemActive"
+          placeholderItem="  " placeholderClass="placeholderStyle" wrapperClass="sortable-wrapper">
+        </bs-sortable>
+        <div class="addfieldList" (click)="list.isAddingListItem=true" *ngIf="!list.isAddingListItem">
+          <span class="fa fa-plus"></span><span class="padCard" *ngIf="list.itemsInList.length===0">Add a
+            card</span><span class="padCard" *ngIf="list.itemsInList.length>0">Add another card</span>
+        </div>
+        <div *ngIf="list.isAddingListItem">
+          <textarea class="carTextArea" #val placeholder="Enter a title for this card.."></textarea>
+          <button type="button" class="btn btn-success cardBtn" (click)="addtoCard(val,i)">Add Card</button>
+          <span class="fa fa-close" (click)="list.isAddingListItem=false"></span>
+        </div>
+      </div>
+    </div>
+    <div class="card cardList addListCard">
+      <div *ngIf="!this.isAddingCardtoList">
+        <div class="addfield" style="margin-top: 0px" (click)="this.isAddingCardtoList=true">
+          <span class="fa fa-plus"></span><span class="padCard">Add another List</span>
+        </div>
+      </div>
+      <div class="addLisBg" *ngIf="this.isAddingCardtoList">
+        <textarea class="carTextArea" #val placeholder="Enter a title for this List.."></textarea>
+        <button type="button" class="btn btn-success cardBtn" style="float: left;" (click)="addToList(val)">Add
+          List</button>
+        <span class="fa fa-close addlistCls" (click)="this.isAddingCardtoList=false"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Add new-->
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Create New Board</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeAddNew()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="padding-left: 6px;">
+    <form>
+      <div style="display:flex">
+        <div class=" createContainer" [style.background-color]="backgroundColorDefault"
+          [style.background-image]="backgroundDefault">
+          <div style="padding-bottom: 10px">
+            <input type="text" class="createInput" [(ngModel)]="titleNew" [ngModelOptions]="{standalone: true}"
+              placeholder="Add board Title">
+          </div>
+          <div style="padding-bottom: 10px">
+            <select [(ngModel)]="privacyOpt" [ngModelOptions]="{standalone: true}" class="createSelect">
+              <option value="Public" class="createOption">Public</option>
+              <option value="Private" class="createOption" selected>Private</option>
+            </select>
+          </div>
+        </div>
+        <ul class="contain">
+          <li>
+            <a>
+              <div class="cell">
+                <button class="innerBtn" type="button" (click)="changeBgImg($event)"
+                  style="background-image: url(&quot;https://images.unsplash.com/photo-1553600842-dc436cacbab4?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=400&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjcwNjZ9&quot;);"></button>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a>
+              <div class="cell">
+                <button class="innerBtn" type="button" (click)="changeBgImg($event)"
+                  style="background-image: url(&quot;https://images.unsplash.com/photo-1553534952-63b37844b7f2?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=400&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjcwNjZ9&quot;);"></button>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a>
+              <div class="cell">
+                <button class="innerBtn" type="button" (click)="changeBgImg($event)"
+                  style="background-image: url(&quot;https://images.unsplash.com/photo-1553616185-389b0d49fd4c?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=400&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjcwNjZ9&quot;);"></button>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a>
+              <div class="cell">
+                <button class="innerBtn" type="button" (click)="changeBgImg($event)"
+                  style="background-image: url(&quot;https://images.unsplash.com/photo-1553623717-091c3c3d1153?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=400&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjcwNjZ9&quot;);"></button>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a>
+              <div class="cell">
+                <button class="innerBtn" title="blue" type="button" (click)="changeBgColor('rgb(0, 121, 191)')"
+                  style="background-color: rgb(0, 121, 191);"></button> </div>
+            </a>
+          </li>
+          <li>
+            <a>
+              <div class="cell">
+                <button class="innerBtn" title="orange" (click)="changeBgColor('rgb(210, 144, 52)')" type="button"
+                  style="background-color: rgb(210, 144, 52);"></button> </div>
+            </a>
+          </li>
+          <li>
+            <a>
+              <div class="cell">
+                <button class="innerBtn" title="green" type="button" (click)="changeBgColor('rgb(81, 152, 57)')"
+                  style="background-color: rgb(81, 152, 57);"></button> </div>
+            </a>
+          </li>
+          <li>
+            <a>
+              <div class="cell">
+                <button class="innerBtn" title="red" type="button" (click)="changeBgColor('rgb(176, 70, 50)')"
+                  style="background-color: rgb(176, 70, 50);"></button> </div>
+            </a>
+          </li>
+          <li>
+            <a>
+              <div class="cell">
+                <button class="innerBtn" title="lightGreen" type="button" (click)="changeBgColor('rgb(149, 176, 50)')"
+                  style="background-color: rgb(149, 176, 50);"></button> </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <button type="button" [disabled]="titleNew.length===0" class="btn btn-success"
+        (click)="careBoard()">Create</button>
+    </form>
+  </div>
+</ng-template>
+
+
+<!--PopUp Menu-->
+<ng-template #templateList>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{this.CommonServiceService.selectedOption}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeListModel()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="padding-left: 6px;">
+    <app-popup (close)="closeListModel()"></app-popup>
+  </div>
+</ng-template>
+
+
+
+<ng-template #quickEditor>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Card Quick Editor</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closequickEditor()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="padding-left: 6px;">
+    <form>
+      <div class="quickEditorContainer">
+        <textarea class="quickEditortext" #titleElm>{{this.CommonServiceService.selectedListitem.title}}</textarea>
+        <div>
+          <div class="quick-editor-action"><a class="quick-editor-subAction" (click)="moveElemt($event,'Move')">
+              <span class="fa fa-arrows"></span><span class="marLeft4">Move</span></a>
+            <a (click)="moveElemt($event,'Copy')" class="quick-editor-subAction">
+              <span class="fa fa-copy"></span><span class="marLeft4">Copy</span></a>
+            <a (click)="deleteElem()" class="quick-editor-subAction"><span class="fa fa-archive"></span>
+              <span class="marLeft4">Delete</span></a></div>
+        </div>
+      </div>
+
+      <button type="button" style="margin-left: 30px;" class="btn btn-success"
+        (click)="saveChange($event,titleElm)">Save</button>
+    </form>
+  </div>
+</ng-template>

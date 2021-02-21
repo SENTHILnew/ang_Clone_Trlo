@@ -1,0 +1,110 @@
+.subHeader {
+    font-size: 20px;
+    font-weight: 700;
+    color: black;
+    line-height: 28px;
+    overflow: hidden;
+    padding-left: 2px;
+    padding-right: 10px;
+    float: left;
+    width: fit-content;
+    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+}
+
+.boardtitleEditer {
+    width: fit-content;
+    background: #00000061;
+    color: white;
+    border: 2px solid rgba(53, 53, 245, 0.753);
+    border-radius: 4px;
+    padding-left: 4px;
+}
+
+.listItemEditcon {
+    margin-top: 10px;
+    display: flex
+}
+
+.listitemMenu {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 80%;
+}
+
+.editDcescBtn {
+    float: none !important;
+    height: 25px;
+    width: 50px;
+    border-radius: 3px;
+    color: black;
+    background: #00000021;
+    padding: 0px;
+}
+
+.descLabel {
+    margin-right: 4px;
+    font-size: 18px;
+}
+
+.explainP {
+    width: 100%;
+    height: 50px;
+    background: #00000042;
+    border-radius: 3px;
+    padding: 8px;
+}
+
+.descTextArea {
+    overflow: hidden;
+    overflow-wrap: break-word;
+    resize: none;
+    height: 90px;
+    width: 100%;
+    border-radius: 3px;
+    border: 2px solid #0076ffbd;
+}
+
+.desccn {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.descmarg {
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 10px;
+}
+
+.deleteLink {
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: 18px;
+}
+
+.nameTag {
+    font-size: 17px;
+    margin-left: 14px;
+    font-weight: 800;
+    color: #1d1b1b9c;
+}
+
+.commentCard {
+    width: fit-content;
+    padding: 5px;
+    margin-left: 18px;
+    height: fit-content;
+    background: #0000000d;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.actionHeder {
+    font-size: 18px;
+    font-weight: 400;
+    color: #7f7e7e;
+    margin-bottom: 10px;
+}

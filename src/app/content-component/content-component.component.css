@@ -1,0 +1,332 @@
+.maincontent {
+    width: 100%;
+    min-width: 352px;
+    /*  padding-left: 20px;
+    padding-right: 20px; */
+}
+
+.pad10 {
+    padding-left: 10px;
+    color: #17394d;
+    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+    display: inline-block;
+    line-height: 24px;
+    margin: 4px 0 0;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.flexList {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-top: 10px;
+}
+
+.cardHeading {
+    padding-left: 8px;
+    padding-top: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+}
+
+.star {
+    float: right;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    color: white;
+}
+
+.card {
+    background-color: rgb(0, 121, 191);
+    background-size: cover;
+    background-position: 50%;
+}
+
+.cardContainer {
+    width: 25%;
+    min-width: 125px;
+    padding-left: 12px;
+    padding-bottom: 12px;
+}
+
+.divContainer {
+    display: flex;
+    height: 100px;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.divContainer:hover {
+    background-color: #0000001f;
+}
+
+.newBoard {
+    margin: auto;
+    padding-left: 0px;
+    padding-top: 0;
+}
+
+.newBoardCard {
+    background-color: #abb4b9;
+}
+
+.createContainer {
+    background-color: #4a9ee2;
+    padding: 16px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background-size: cover;
+    background-position: 50%;
+    max-height: 115px;
+    width: 65%;
+}
+
+.createInput {
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    height: 30px;
+    padding: 4px;
+    background: hsla(0, 0%, 100%, 0.35);
+    width: 100%;
+}
+
+.createInput:hover {
+    background: hsla(0, 0%, 100%, .15);
+}
+
+.createSelect {
+    background: hsla(0, 0%, 100%, 0.35);
+    border: none;
+    width: 125px;
+    color: white;
+}
+
+.createOption {
+    color: black;
+}
+
+.flexBox {
+    list-style: none;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.cellStyle {
+    height: 10px;
+    width: 10px
+}
+
+.innerBtn {
+    background: 50%/cover #fff;
+    box-shadow: none;
+    align-items: center;
+    border-radius: 3px;
+    color: rgba(0, 0, 0, .4);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    margin: 0;
+    min-height: 0;
+    padding: 0;
+    position: relative;
+    line-height: 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+.contain {
+    display: grid;
+    grid-template-columns: 25% 25% 25%;
+    grid-template-rows: 25% 25% 25%;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    list-style: none;
+    padding-left: 1%;
+}
+
+.cell {
+    height: 45px;
+    width: 45px;
+}
+
+.boardHeader {
+    background: #00000030;
+    height: 55px;
+    padding: 10px;
+}
+
+.subHeader {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    line-height: 28px;
+    overflow: hidden;
+    padding-left: 2px;
+    padding-right: 10px;
+    float: left;
+    width: fit-content;
+    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+}
+
+.divider {
+    border-left: 1px solid hsla(0, 0%, 100%, .2);
+    height: 16px;
+    margin: 8px 6px 0 0;
+    float: left;
+}
+
+.headerStar {
+    padding-top: 9px;
+    margin-left: 5px;
+    margin-right: 8px;
+    color: white;
+    float: left;
+}
+
+.headerBtn {
+    margin-top: 0px;
+    float: left;
+    margin-left: 5px;
+}
+
+.innerContainer {
+    width: 100%;
+    overflow: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    height: 85vh;
+}
+
+.cardList {
+    width: 16rem;
+    background-color: #dfe3e6;
+    margin-right: 20px;
+    display: flex;
+    min-width: 250px;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.cardListHeader {
+    padding: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #17394d;
+    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+}
+
+.menuList {
+    float: right
+}
+
+.fltRgt {
+    float: right;
+    font-size: 10px;
+    text-align: center;
+    vertical-align: bottom;
+    transform: translateY(50%);
+    width: 13px;
+    height: 13px;
+    cursor: pointer;
+}
+
+.addfield {
+    margin-top: 14px;
+    color: #dadada;
+    border-radius: 3px;
+    padding: 4px;
+}
+
+.addfield:hover {
+    color: white;
+    background-color: #0000001f;
+}
+
+.addfieldList {
+    margin-top: 14px;
+    color: #00000078;
+    border-radius: 3px;
+    padding: 4px;
+}
+
+.addfieldList:hover {
+    color: #000000d7;
+    background-color: #0000001f;
+}
+
+.padCard {
+    padding-left: 10px;
+    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+}
+
+.padCard:hover {
+    text-decoration: underline;
+}
+
+.addListCard {
+    height: fit-content;
+    text-align: center;
+    background-color: #0000005e;
+}
+
+.carTextArea {
+    border-radius: 4px;
+    margin: 10px 0px;
+    display: block;
+    border: none;
+    width: 180px;
+    height: 50px;
+    box-shadow: 0 1px 0 rgba(9, 45, 66, .25);
+}
+
+.cardBtn {
+    padding: 3px;
+    margin-right: 10px;
+}
+
+.addlistCls {
+    float: left;
+    padding-top: 10px;
+    color: white;
+}
+
+.addLisBg {
+    margin: 5px;
+}
+
+.boardtitleEditer {
+    width: fit-content;
+    background: #00000061;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding-left: 4px;
+}
+
+.quickEditorContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.quickEditortext {
+    border-radius: 4px;
+    height: 70px;
+    width: 200px;
+    border: 2px solid #0078ff96;
+    resize: none;
+    overflow: auto;
+    margin-left: 30px;
+}

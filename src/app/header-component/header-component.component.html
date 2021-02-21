@@ -1,0 +1,11 @@
+<div class="maincontainer" [style.background]="CommonServiceService.isboardview?'rgba(0,0,0,.15)':'#026aa7'">
+
+      <button type="button" (click)="changeView()" class="btn btn-primary btCustom">
+            <span class="fa fa-home"></span>
+            <span class="padLeft4 optFont">Home</span>
+      </button>
+      <button type="button" (click)="editList()" class="btn btn-primary btCustom mar0">
+            <span class="optFont">Delete Boards</span>
+      </button>
+      <img class="iconHeader" src="../../assets/tropper.jpg" alt="clone" (click)="openLink()">
+</div>

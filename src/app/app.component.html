@@ -1,0 +1,5 @@
+<div [ngClass]="{'bgCover':CommonServiceService.isboardview}" class="mainElem"
+    [style.background-color]="CommonServiceService.isboardview?CommonServiceService.selectedBoard.bgColor:'white'"
+    [style.background-image]="CommonServiceService.isboardview?CommonServiceService.selectedBoard.bgImg:'none'">
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,112 @@
+<app-header-component class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" (openPop)="openpopMenu($event)"
+  style="padding-left: 0px;padding-right: 0px"></app-header-component>
+<app-content-component *ngIf="!refresh" (opnitemEdit)="openitemEdit()" [openpopUp]="inputString">
+</app-content-component>
+
+<!--Delete Boards-->
+<ng-template #templateBoard>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{this.CommonServiceService.selectedOption}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeBoardModel()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="padding-left: 6px;">
+    <app-popup (upDateboards)="openpopMenu($event)" (close)="closeBoardModel()"></app-popup>
+  </div>
+</ng-template>
+
+<!--Description /comments-->
+
+<ng-template #templateEditListitem>
+  <div class="modal-body" style="padding-left: 6px;">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeListModel()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="subHeader"><span class="fa fa-credit-card" style="margin-right:4px" *ngIf="!titleEditable"></span><span
+        *ngIf="!titleEditable" (click)="titleEditable=true">{{CommonServiceService.selectedListitem.title}}</span>
+      <input *ngIf="titleEditable" class="boardtitleEditer" type="text"
+        [(ngModel)]="CommonServiceService.selectedListitem.title" (blur)="titleEditable=false">
+    </div>
+    <div style="padding-top: 7px;">
+      <span>in List {{CommonServiceService.seletedList?.title}}</span>
+    </div>
+    <div class="listItemEditcon">
+      <div  class="listitemMenu">
+        <div>
+          <div><span class="fa fa-align-left descLabel">
+            </span>
+            <span class="descLabel">Description</span>
+            <button class="btn btn-primary btCustom mar0 headerBtn editDcescBtn" (click)="edittingDesc=true"
+              type="button"><span class="optFont">Edit</span></button>
+          </div>
+          <div class="desccn">
+            <div
+              *ngIf="(CommonServiceService.selectedListitem?.desc!==''||CommonServiceService.selectedListitem?.desc!==' ')&& !edittingDesc"
+              dir="auto">
+              <p class="descmarg">{{CommonServiceService.selectedListitem?.desc}}</p>
+            </div>
+            <p (click)="edittingDesc=true" class="explainP"
+              *ngIf="(CommonServiceService.selectedListitem?.desc===''||CommonServiceService.selectedListitem?.desc===' ')&& !edittingDesc">
+              <a>Add a more detailed description…</a></p>
+            <div *ngIf="edittingDesc"><textarea #descElem placeholder="Add a more detailed description…"
+                class="descTextArea">{{CommonServiceService.selectedListitem?.desc}}</textarea>
+              <div><input type="submit" class="btn btn-primary btCustom mar0 headerBtn editDcescBtn"
+                  (click)="changeDesc(descElem)" value="Save"><a class="fa fa-close" (click)="edittingDesc=false"></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div>
+          <div><span class="fa fa-comment-o descLabel">
+            </span>
+            <span class="descLabel">Add Commend</span>
+          </div>
+          <div class="desccn">
+            <form>
+              <div>
+                <div><textarea #comment class="descTextArea" placeholder="Write a comment…" tabindex="1"
+                    dir="auto"></textarea></div>
+              </div>
+              <div>
+                <input (click)="commentedFun(comment)" class="btn btn-primary btCustom mar0 headerBtn editDcescBtn"
+                  tabindex="3" type="submit" value="Save">
+              </div>
+            </form>
+          </div>
+        </div>
+        <div>
+          <div><span class="fa fa-history descLabel">
+            </span>
+            <span class="descLabel">Activity</span>
+          </div>
+          <div class="desccn">
+            <div style="border-bottom: 1px solid #63636345;"
+              *ngFor="let item of CommonServiceService.selectedListitem?.comments;let i=index">
+              <div><span class="nameTag">You</span>
+
+                <div class="card commentCard">
+                  <p>{{item}}</p>
+                </div>
+              </div>
+              <div class="deleteLink">
+                <div><span><a (click)="deletecomment(i)">Delete</a></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-right: 2%;" class="listitemMenu">
+        <div class="actionHeder">Actions List</div>
+        <div class="quick-editor-action" style=" margin-left:0px"><a class="quick-editor-subAction"
+            (click)="moveElemt($event,'Move')">
+            <span class="fa fa-arrows"></span><span class="marLeft4">Move</span></a>
+          <a (click)="moveElemt($event,'Copy')" class="quick-editor-subAction">
+            <span class="fa fa-copy"></span><span class="marLeft4">Copy</span></a>
+          <a (click)="deleteElem()" class="quick-editor-subAction"><span class="fa fa-archive"></span>
+            <span class="marLeft4">Delete</span></a></div>
+      </div>
+    </div>
+  </div>
+</ng-template>

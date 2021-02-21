@@ -1,0 +1,55 @@
+.listStyle {
+    height: 30px;
+    padding: 4px;
+    border-bottom: 1px #00000017 solid;
+    cursor: pointer;
+    margin-top: 5px;
+    background-color: #00000012;
+}
+
+.listStyle:hover {
+    background-color: #0000003d;
+    text-decoration: underline;
+    color: white;
+}
+
+.listUlStyle {
+    list-style: none;
+    padding-left: 4px;
+}
+
+.menuLabel {
+    margin-right: 30px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #350035;
+}
+
+.menudrop {
+    width: 200px;
+    height: 40px;
+    border-radius: 6px;
+    border: 1px #3d04c1 solid;
+    padding: 8px;
+}
+
+.board-label {
+    display: inline;
+    vertical-align: middle;
+    font-size: 17px;
+    padding-left: 35px;
+}
+
+.bord-checkbox {
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    margin-right: 14px;
+    display: inline;
+}
+
+.board-btn {
+    padding-bottom: 1em;
+    padding-left: 2em;
+    margin-top: 1em;
+}

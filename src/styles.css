@@ -1,0 +1,178 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+body {
+    width: 100%;
+    /*    min-height: 1160px; */
+    height: 100%;
+    background-color: white;
+    font-family: "Helvetica Neue,Arial,Helvetica,sans-serif";
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.sortable-item {
+    padding: 6px 12px;
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    cursor: -webkit-grab;
+    cursor: grab;
+    border-radius: 4px;
+    margin-top: 8px;
+    background-color: #fff;
+    box-shadow: 0 1px 0 rgba(9, 45, 66, .25);
+    color: #17394d;
+    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+}
+
+.sortableItemActive {
+    background-color: #e6e6e6;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.quick-editor-action {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 20px;
+}
+
+.quick-editor-subAction {
+    height: 30px;
+    color: #fff5f5 !important;
+    width: 100px;
+    background: #000000bf;
+    border-radius: 2px;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 8px;
+}
+
+.quick-editor-subAction:hover {
+    color: white !important;
+    margin-left: 4px;
+    text-decoration: underline;
+    width: 96px;
+}
+
+.marLeft4 {
+    margin-left: 4px;
+}
+
+.placeholderStyle {
+    width: 100px;
+    height: 20px;
+}
+
+.svd_commercial_container {
+    display: none;
+}
+
+.activeCustom {
+    background: rgb(90, 200, 250);
+    content: "";
+}
+
+.maincontainer {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.cmp {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* #mainNavWrapper nav > div a.nav-item.nav-link:hover, */
+
+#mainNavWrapper {
+    cursor: pointer;
+}
+
+#mainNavWrapper nav>div a.nav-item.nav-link:focus {
+    border: none;
+    /* background: #e74c3c; */
+    /* color:#fff; */
+    color: #000;
+    border-radius: 0;
+    background-color: white;
+    /* transition:background 0.05s linear; */
+}
+
+#mainNavWrapper nav>div a.nav-item.nav-link {
+    padding: 18px 25px;
+    /* color:#fff; */
+    color: #000;
+    /* background:#272e38; */
+    border-radius: 0;
+    background-color: white;
+}
+
+#mainNavWrapper nav>div a.nav-item.nav-link.active {
+    border: none;
+    padding: 18px 25px;
+    /* color:#fff; */
+    color: #000;
+    /* background:#272e38; */
+    border-radius: 0;
+    background-color: rgb(90, 200, 250);
+}
+
+.con {
+    width: 100%
+}
+
+.firstContainer {
+    display: inline;
+    padding-left: 1em;
+    cursor: pointer;
+}
+
+.secondContainer {
+    display: inline;
+    float: right;
+    padding-top: 1em;
+    padding-right: 0.5em;
+    color: white;
+    cursor: pointer;
+}
+
+.title {
+    color: white;
+    font-size: 30px;
+}
+
+.custom_bg {
+    background-color: #024;
+}
+
+.rowRm {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.btCustom {
+    margin: 5px 8px;
+    color: white;
+    border-color: #3284f3b8;
+    background: hsla(0, 0%, 100%, .3);
+    padding: 4px;
+}
+
+.btCustom:hover {
+    background-color: rgba(255, 255, 255, 0.089)
+}
+
+.mar0 {
+    margin-left: 0px;
+}
+
+.optFont {
+    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+}

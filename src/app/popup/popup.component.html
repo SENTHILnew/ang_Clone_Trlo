@@ -1,0 +1,92 @@
+<!--Move/Copy card-->
+<div *ngIf="this.CommonServiceService.selectedOption==='Move' || this.CommonServiceService.selectedOption==='Copy'">
+  <div>
+    <div style="padding: 15px;"><span class="menuLabel" style="margin-right: 47px;">Board</span>
+      <select [(ngModel)]="selectedBoard" class="menudrop" (ngModelChange)="boardChange($event)">
+        <option *ngFor="let item of this.CommonServiceService.boards" [ngValue]="item">{{item.title}}</option>
+      </select></div>
+  </div>
+  <div>
+    <div style="padding: 15px;"><span class="menuLabel" style="margin-right: 65px;">List</span>
+      <select [(ngModel)]="selectedList" class="menudrop" (ngModelChange)="listChange($event)">
+        <option *ngFor="let item of selectedBoard.list" [ngValue]="item">{{item.title}}</option>
+      </select></div>
+    <div style="padding: 15px;"><span class="menuLabel">Position</span>
+      <select [(ngModel)]="selectedPosition" class="menudrop">
+        <option *ngFor="let item of selectedList.itemsInList;let i=index" [ngValue]="i">{{i}}</option>
+      </select></div>
+  </div><input type="submit" class="btn btn-success" style="margin-left: 15px;" (click)="commit()"
+    [value]="this.CommonServiceService.selectedOption==='Move'?'Move Card':'Copy Card'">
+</div>
+
+<!--List Menu-->
+<div *ngIf="this.CommonServiceService.selectedOption==='List Menu'">
+  <ul class="listUlStyle">
+    <li class="listStyle"><a (click)="triggerEvent('Copy Menu')">Copy List</a></li>
+    <li class="listStyle"><a (click)="triggerEvent('Move Menu')">Move List</a></li>
+  </ul>
+</div>
+
+<!--Move/Copy List-->
+<div
+  *ngIf="this.CommonServiceService.selectedOption==='Move Menu' || this.CommonServiceService.selectedOption==='Copy Menu'">
+  <div>
+    <div style="padding: 15px;"><span class="menuLabel" style="margin-right: 47px;">Board</span>
+      <select class="menudrop" [(ngModel)]="selectedBoard" (ngModelChange)="boardChange($event)">
+        <option *ngFor="let item of this.CommonServiceService.boards" [ngValue]="item">{{item.title}}</option>
+      </select></div>
+  </div>
+  <div>
+    <div style="padding: 15px;"><span class="menuLabel">Position</span>
+      <select class="menudrop" [(ngModel)]="selectedPosition">
+        <option *ngFor="let item of selectedBoard.list;let i=index" [ngValue]="i">{{i}}</option>
+      </select></div>
+  </div><input class="btn btn-success" style="margin-left: 15px;" type="submit" (click)="commit()"
+    [value]="this.CommonServiceService.selectedOption==='Move Menu'?'Move List':'Copy List'">
+
+</div>
+
+<!--Delete Boards-->
+<div *ngIf="CommonServiceService.selectedOption==='Board Menu'">
+  <div>
+    <div *ngFor="let board of CommonServiceService.boards" style="margin-bottom: 5px;">
+      <label class="board-label">
+        <input class="bord-checkbox" type="checkbox" name="checklists" [(ngModel)]="board.del">{{board.title}}</label>
+    </div>
+  </div>
+  <div class="board-btn"><input class="btn btn-success" type="submit" (click)="commit()" value="Delete"></div>
+</div>
+
+
+<!--Delete Lists/Cards together for particular board-->
+<div *ngIf="CommonServiceService.selectedOption==='Delete Multiple'">
+
+  <div style="padding: 35px;">
+
+    <div *ngFor="let list of CommonServiceService.selectedBoard.list" style="margin-bottom: 15px;">
+      <label style="font-size: 18px;
+              font-weight: 600;
+              color: #521052;">List</label><br>
+      <label style="display: inline;
+        vertical-align: middle;
+        font-size: 15px;
+        font-weight: 400;">
+        <input style="vertical-align: middle; display: inline;width:20px;height:20px;margin-right: 5px;" type="checkbox"
+          name="checklists" [(ngModel)]="list.del">{{list.title}}</label>
+      <br>
+      <label style="    margin-top: 15px;
+          padding-left: 10px;
+          color: #521052;">Cards</label>
+      <br>
+      <div style="padding-left: 10px;
+          font-weight: 400;" *ngFor="let card of list.itemsInList">
+        <label style="display: inline;vertical-align: middle;font-size: 17px;padding-left: 12px;">
+          <input style="vertical-align: middle; display: inline;width:20px;height:20px;margin-right: 5px;"
+            type="checkbox" name="checklists" [(ngModel)]="card.del">{{card.title}}</label></div>
+    </div>
+
+
+  </div>
+  <div style="padding-bottom: 1em;padding-left: 1em;"><input class="btn btn-success" type="submit" (click)="commit()"
+      value="Delete"></div>
+</div>

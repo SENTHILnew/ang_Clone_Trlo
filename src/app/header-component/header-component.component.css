@@ -1,0 +1,27 @@
+.conta {
+    height: 100%;
+    position: relative;
+    z-index: 0;
+}
+
+.showIconse {
+    display: inline;
+}
+
+.maincontainer {
+    color: white;
+    min-height: 45px
+}
+
+.padLeft4 {
+    padding-left: 4px;
+}
+
+.iconHeader {
+    height: 42px;
+    width: 42px;
+    margin-top: 0px;
+    float: right;
+    margin-right: 8px;
+    border-radius: 50%;
+}
