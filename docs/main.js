@@ -580,7 +580,7 @@ module.exports = ".conta {\r\n    height: 100%;\r\n    position: relative;\r\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"maincontainer\" [style.background]=\"CommonServiceService.isboardview?'rgba(0,0,0,.15)':'#026aa7'\">\r\n\r\n      <button type=\"button\" (click)=\"changeView()\" class=\"btn btn-primary btCustom\">\r\n            <span class=\"fa fa-home\"></span>\r\n            <span class=\"padLeft4 optFont\">Home</span>\r\n      </button>\r\n      <button type=\"button\" (click)=\"editList()\" class=\"btn btn-primary btCustom mar0\">\r\n            <span class=\"optFont\">Delete Boards</span>\r\n      </button>\r\n      <img class=\"iconHeader\" src=\"../../assets/tropper.jpg\" alt=\"clone\" (click)=\"openLink()\">\r\n</div>"
+module.exports = "<div class=\"maincontainer\" [style.background]=\"CommonServiceService.isboardview?'rgba(0,0,0,.15)':'#026aa7'\">\r\n\r\n      <button type=\"button\" (click)=\"changeView()\" class=\"btn btn-primary btCustom\">\r\n            <span class=\"fa fa-home\"></span>\r\n            <span class=\"padLeft4 optFont\">Home</span>\r\n      </button>\r\n      <button type=\"button\" (click)=\"editList()\" class=\"btn btn-primary btCustom mar0\">\r\n            <span class=\"optFont\">Delete Boards</span>\r\n      </button>\r\n      <img class=\"iconHeader\" src=\"assets/tropper.jpg\" alt=\"clone\" (click)=\"openLink()\">\r\n</div>"
 
 /***/ }),
 
